@@ -1,0 +1,149 @@
+.login-body 
+{
+    background-color: #109640 !important;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #26bb0a !important;
+}
+
+.navbar-default {
+    /*background-color: #095f17 !important;*/
+  background-color:#309e52 !important;
+    border-color: #e7e7e7;
+}
+.navbar-default .navbar-nav>li>a {
+    /*color: #fff !important ;*/
+    color:#309e52 !important;
+}
+.navbar-default .navbar-brand {
+  color:#309e52 !important;
+    /*color: #c9e7ea !important ;*/
+}
+.richie 
+{
+  padding-top: 7px !important;  
+ }
+.LogIn {
+border:1px solid gray;
+padding:10px;
+}
+   
+ .btn-primary {
+    color: #d8ffff !important ;
+    background-color: #095f17 !important;
+    border-color: #095f17 !important;
+}  
+   
+   
+    
+.kulay
+{
+  color:Red;
+}
+
+
+html {
+
+    height: 100vh;
+
+    background-color: white;
+
+}
+
+body {
+ margin-top:0 !important;
+
+    height: 50%;
+
+
+
+    background-size: cover;
+
+} 
+
+.table table  tbody  tr  td a ,
+.table table  tbody  tr  td  span {
+position: relative;
+float: left;
+padding: 6px 12px;
+margin-left: -1px;
+line-height: 1.42857143;
+color: #337ab7;
+text-decoration: none;
+background-color: #fff;
+border: 1px solid #ddd;
+}
+
+.table table > tbody > tr > td > span {
+z-index: 3;
+color: #fff;
+cursor: default;
+background-color: #337ab7;
+border-color: #337ab7;
+}
+
+.table table > tbody > tr > td:first-child > a,
+.table table > tbody > tr > td:first-child > span {
+margin-left: 0;
+border-top-left-radius: 4px;
+border-bottom-left-radius: 4px;
+}
+
+.table table > tbody > tr > td:last-child > a,
+.table table > tbody > tr > td:last-child > span {
+border-top-right-radius: 4px;
+border-bottom-right-radius: 4px;
+}
+
+.table table > tbody > tr > td > a:hover,
+.table   table > tbody > tr > td > span:hover,
+.table table > tbody > tr > td > a:focus,
+.table table > tbody > tr > td > span:focus {
+z-index: 2;
+color: #23527c;
+background-color: #eee;
+border-color: #ddd;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover 
+{
+    background-color: #c7f5cd;
+    }
+	
+	
+	.myCheckbox input {
+
+    position: relative;
+    z-index: -9999;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.highlight {
+    background-color: yellow;
+  }
+
+  
+  
+  
+  
+  
+  

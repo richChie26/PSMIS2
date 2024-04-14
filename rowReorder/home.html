@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Property and Supply Management Information System</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/logo.ico">
+  <link rel="stylesheet" href="bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="chiescript.js" type="text/javascript"></script>
+  <script src="buttonevents.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+  <style>
+    .newwarning {
+      border-style: solid;
+      border-color: red;
+    }
+ 
+    .myborder {
+
+      border: 1px solid black;
+      border-top: 1px solid red;
+      /* border-bottom: 1px solid red; */
+    }
+
+    .printheader {
+      top: 0;
+      margin-top: 0px;
+    }
+
+    #imglogoheader {
+      background-image: url('img/Logo.bmp');
+      width: 80px;
+      height: 80px;
+      float: left;
+    }
+
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .carousel-inner img {
+      width: 100%;
+      /* Set width to 100% */
+      margin: auto;
+      min-height: 200px;
+
+
+    }
+
+    .richieholder::-webkit-input-placeholder {
+      color: #337ab7
+    }
+
+    /* Hide the carousel text when the screen is less than 600 pixels wide */
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+      }
+
+
+    }
+
+    @media print {
+      
+      #footer {
+        display: none;
+      }
+    }
+
+    .navbar {
+      box-shadow: 10px 10px 5px grey;
+      border-radius: 25px;
+      background-color: #0f51d4;
+      border-color: #01579b;
+      color: white !important;
+
+    }
+
+    .navbar-nav>li>a {
+      color: white !important;
+
+    }
+
+    /* .navbar-nav>li>.dropdown-menu{
+      width: fit-content !important;
+    } */
+    /*.container-fluid {
+    border-color: #ffffff;
+    color: #ffffff !important;
+    background-color: #ffffff;
+}
+   
+}*/
+
+    body {
+      background-image: url('img/logo.png');
+      background-repeat: no-repeat;
+      background-size: auto;
+      background-size: 400px 400px;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .dropdown-menu {
+      height: auto;
+      max-height: 500px;
+      overflow-x: hidden;
+    }
+
+    .richiehide {
+      display: none;
+    }
+
+
+    .rates-page-tabs .nav-tabs>li>a {
+      border: none;
+      text-transform: uppercase;
+      color: #7d7d7d;
+    }
+
+    .rates-page-tabs .nav-tabs>li>a:hover,
+    .rates-page-tabs .nav-tabs>li>a:focus {
+      color: red;
+      background-color: white;
+      box-shadow: 0px -2px 0px red inset;
+    }
+
+    .rates-page-tabs .nav-tabs>li.active>a,
+    .rates-page-tabs .nav-tabs>li.active>a:focus,
+    .rates-page-tabs .nav-tabs>li.active>a:hover {
+      border: none;
+      box-shadow: 0px -2px 0px red inset;
+      color: red;
+    }
+
+    #tuklawtitle {
+      color: rgba(35, 99, 6, 0.753);
+      box-shadow: 0px -2px 0px rgb(58, 3, 185) inset;
+    }
+
+    .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border: 1px solid #ddd;
+    }
+
+    .rates-page-tabs .panel-group,
+    .rates-page-tabs .panel-group .panel,
+    .rates-page-tabs .panel-group .panel-heading,
+    .rates-page-tabs .panel-group .panel-heading a,
+    .rates-page-tabs .panel-group .panel-title,
+    .rates-page-tabs .panel-group .panel-title a,
+    .rates-page-tabs .panel-group .panel-body,
+    .rates-page-tabs .panel-group .panel-group .panel-heading+.panel-collapse>.panel-body {
+      border-radius: 2px;
+      border: 0;
+    }
+
+    .rates-page-tabs .panel-group .panel-heading {
+      padding: 0;
+      background-color: white;
+    }
+
+    .rates-page-tabs .panel-group .panel-heading a {
+      display: block;
+      color: #303030;
+      font-size: 12px;
+      padding: 15px 15px 15px 45px;
+      text-decoration: none;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .rates-page-tabs .panel-group .panel-heading a.collapsed {}
+
+    .rates-page-tabs .panel-group .panel-heading a:before {
+      /*  content: '-';*/
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      font-size: 26px;
+    }
+
+    .rates-page-tabs .panel-group .panel-heading a.collapsed:before {
+      /*content: '+';*/
+      left: 10px;
+      top: 10px;
+    }
+
+
+    .rates-page-tabs .panel-group .panel-collapse {
+      margin-top: 5px !important;
+    }
+
+    .rates-page-tabs .panel-group .panel-body {
+      background: #ffffff;
+      padding: 15px;
+    }
+
+    .rates-page-tabs .panel-group .panel {
+      background-color: transparent;
+    }
+
+    .rates-page-tabs .panel-group .panel-body p:last-child,
+    .rates-page-tabs .panel-group .panel-body ul:last-child,
+    .rates-page-tabs .panel-group .panel-body ol:last-child {
+      margin-bottom: 0;
+    }
+
+
+    .colorred {
+
+      color: red;
+    }
+
+    .hiddenRow {
+      padding: 0 !important;
+    }
+
+    .problema {
+      margin-top: 80px;
+      margin-left: 35px;
+    }
+
+    .asawaproblema {
+      margin-top: 0px;
+      margin-left: 35px;
+    }
+
+    .highlight {
+    background-color: yellow;
+  }
+
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 300px !important;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+  <div id="myheader">
+
+  </div>
+  <div id="cardetails">
+
+  </div>
+  <!-- 
+<div id="mydetails"></div> -->
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login your Account Here!</h4>
+
+          <div id="errmsg"></div>
+
+        </div>
+        <div class="modal-body">
+          <form class="form-group" method="POST" id="emplogin">
+            <div class="form-group">
+              <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="Password" name="password" id="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+              <input class="btn btn-primary " value="Log In" type="submit" name="btnlogin" id="btnlogin">
+
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- change password -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Change Password</h4>
+
+          <div id="errmsg1"></div>
+
+        </div>
+        <div class="modal-body">
+
+          <form class="form-group" method="POST" id="cha">
+
+            <div class="form-group">
+              <input class="form-control" type="Password" name="currentpassword" id="currentpassword"
+                placeholder="Current Password" required="">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="Password" name="newpassword" id="newpassword" placeholder="New Password"
+                required="">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="Password" name="confirmpassword" id="confirmpassword"
+                placeholder="Confirm Password" required="">
+            </div>
+
+            <div class="form-group">
+              <input class="btn btn-success " value="Change Password" type="submit" name="btnpassword" id="btnpassword">
+
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================Confirmation -->
+
+  <div class="modal fade" id="myModalconfirm" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="mdconfirm"></h4>
+
+        </div>
+        <div class="modal-body">
+          <div id="errmsgconf1">11111</div>
+          <div id="richiemodal">
+            <form id="frmdelmenu">
+
+              <input type="hidden" name="mnuid" id="mnuid">
+              <div class="row">
+                <div class="col-xs-2">
+                  <input type="submit" name="btnyes" id="btnyes" value="YES" class="btn btn-primary btn-block btn-flat">
+                </div>
+                <div class="col-xs-2">
+                  <input type="submit" name="btnno" id="btnno" value="NO" class="btn btn-danger btn-block btn-flat">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModallist" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="mdconfirm"></h4>
+
+        </div>
+        <div class="modal-body">
+          <div id="errmsglist"></div>
+          <div id="richielistmodal">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================= -->
+
+  <div class="modal fade" id="tymodal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="mdtitle"></h4>
+
+          <input type="text" name="ric" style="display:none">
+
+        </div>
+        <div class="modal-body">
+          <div id="errrichie"></div>
+          <div id="richierichmodal">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================== -->
+
+  <!-- =============================== -->
+
+
+
+
+
+  <div class="modal fade" id="yourtuklaw" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="tuklawtitle"></h4>
+
+          <div class="modal-body">
+            <div id="errrichie"></div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div id="tuklawmodal">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- =========================== -->
+  <div class="modal fade" id="mymodalrichie" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="mdconfirm">Details</h4>
+
+        </div>
+        <div class="modal-body">
+          <div id="errmsglist1"></div>
+          <div id="richielistmodal1">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" style="display: none;" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="mymodalrichieshowDetails" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="mdconfirm">Show Item Details</h4>
+
+        </div>
+        <div class="modal-body">
+          <div id="errmsglist1"></div>
+          <div id="richielistmodal12">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" style="display: none;" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+</body>
+<script type="text/javascript">
+  var fakewaffle = (function($, fakewaffle) {
+    "use strict";
+    fakewaffle.responsiveTabs = function(collapseDisplayed) {
+      fakewaffle.currentPosition = "tabs";
+      var tabGroups = $(".nav-tabs.responsive");
+      var hidden = "";
+      var visible = "";
+      var activeTab = "";
+      if (collapseDisplayed === undefined) {
+        collapseDisplayed = ["xs", "sm"];
+      }
+      $.each(collapseDisplayed, function() {
+        hidden += " hidden-" + this;
+        visible += " visible-" + this;
+      });
+      $.each(tabGroups, function(index) {
+        var collapseDiv;
+        var $tabGroup = $(this);
+        var tabs = $tabGroup.find("li a");
+        if ($tabGroup.attr("id") === undefined) {
+          $tabGroup.attr("id", "tabs-" + index);
+        }
+        collapseDiv = $("<div></div>", {
+          class: "panel-group responsive" + visible,
+          id: "collapse-" + $tabGroup.attr("id")
+        });
+        $.each(tabs, function() {
+          var $this = $(this);
+          var oldLinkClass =
+            $this.attr("class") === undefined ? "" : $this.attr("class");
+          var newLinkClass = "accordion-toggle";
+          var oldParentClass =
+            $this.parent().attr("class") === undefined ?
+            "" :
+            $this.parent().attr("class");
+          var newParentClass = "panel panel-default";
+          var newHash = $this.get(0).hash.replace("#", "collapse-");
+          if (oldLinkClass.length > 0) {
+            newLinkClass += " " + oldLinkClass;
+          }
+          if (oldParentClass.length > 0) {
+            oldParentClass = oldParentClass.replace(/\bactive\b/g, "");
+            newParentClass += " " + oldParentClass;
+            newParentClass = newParentClass.replace(/\s{2,}/g, " ");
+            newParentClass = newParentClass.replace(/^\s+|\s+$/g, "");
+          }
+          if ($this.parent().hasClass("active")) {
+            activeTab = "#" + newHash;
+          }
+          collapseDiv.append(
+            $("<div>")
+            .attr("class", newParentClass)
+            .html(
+              $("<div>")
+              .attr("class", "panel-heading")
+              .html(
+                $("<h4>")
+                .attr("class", "panel-title")
+                .html(
+                  $("<a>", {
+                    class: newLinkClass,
+                    "data-toggle": "collapse",
+                    "data-parent": "#collapse-" + $tabGroup.attr("id"),
+                    href: "#" + newHash,
+                    html: $this.html()
+                  })
+                )
+              )
+            )
+            .append(
+              $("<div>", {
+                id: newHash,
+                class: "panel-collapse collapse"
+              })
+            )
+          );
+        });
+        $tabGroup.next().after(collapseDiv);
+        $tabGroup.addClass(hidden);
+        $(".tab-content.responsive").addClass(hidden);
+        if (activeTab) {
+          $(activeTab).collapse("show");
+        }
+      });
+      fakewaffle.checkResize();
+      fakewaffle.bindTabToCollapse();
+    };
+    fakewaffle.checkResize = function() {
+      if (
+        $(".panel-group.responsive").is(":visible") === true &&
+        fakewaffle.currentPosition === "tabs"
+      ) {
+        fakewaffle.tabToPanel();
+        fakewaffle.currentPosition = "panel";
+      } else if (
+        $(".panel-group.responsive").is(":visible") === false &&
+        fakewaffle.currentPosition === "panel"
+      ) {
+        fakewaffle.panelToTab();
+        fakewaffle.currentPosition = "tabs";
+      }
+    };
+    fakewaffle.tabToPanel = function() {
+      var tabGroups = $(".nav-tabs.responsive");
+      $.each(tabGroups, function(index, tabGroup) {
+        // Find the tab
+        var tabContents = $(tabGroup)
+          .next(".tab-content")
+          .find(".tab-pane");
+        $.each(tabContents, function(index, tabContent) {
+          // Find the id to move the element to
+          var destinationId = $(tabContent)
+            .attr("id")
+            .replace(/^/, "#collapse-");
+          // Convert tab to panel and move to destination
+          $(tabContent)
+            .removeClass("tab-pane")
+            .addClass("panel-body fw-previous-tab-pane")
+            .appendTo($(destinationId));
+        });
+      });
+    };
+    fakewaffle.panelToTab = function() {
+      var panelGroups = $(".panel-group.responsive");
+      $.each(panelGroups, function(index, panelGroup) {
+        var destinationId = $(panelGroup)
+          .attr("id")
+          .replace("collapse-", "#");
+        var destination = $(destinationId).next(".tab-content")[0];
+        // Find the panel contents
+        var panelContents = $(panelGroup).find(
+          ".panel-body.fw-previous-tab-pane"
+        );
+        // Convert to tab and move to destination
+        panelContents
+          .removeClass("panel-body fw-previous-tab-pane")
+          .addClass("tab-pane")
+          .appendTo($(destination));
+      });
+    };
+    fakewaffle.bindTabToCollapse = function() {
+      var tabs = $(".nav-tabs.responsive").find("li a");
+      var collapse = $(".panel-group.responsive").find(".panel-collapse");
+      // Toggle the panels when the associated tab is toggled
+      tabs.on("shown.bs.tab", function(e) {
+        if (fakewaffle.currentPosition === "tabs") {
+          var $current = $(e.currentTarget.hash.replace(/#/, "#collapse-"));
+          $current.collapse("show");
+          if (e.relatedTarget) {
+            var $previous = $(e.relatedTarget.hash.replace(/#/, "#collapse-"));
+            $previous.collapse("hide");
+          }
+        }
+      });
+      // Toggle the tab when the associated panel is toggled
+      collapse.on("shown.bs.collapse", function(e) {
+        if (fakewaffle.currentPosition === "panel") {
+          // Activate current tabs
+          var current = $(e.target).context.id.replace(/collapse-/g, "#");
+          $('a[href="' + current + '"]').tab("show");
+          // Update the content with active
+          var panelGroup = $(e.currentTarget).closest(".panel-group.responsive");
+          $(panelGroup)
+            .find(".panel-body")
+            .removeClass("active");
+          $(e.currentTarget)
+            .find(".panel-body")
+            .addClass("active");
+        }
+      });
+    };
+    $(window).resize(function() {
+      fakewaffle.checkResize();
+    });
+    return fakewaffle;
+  })(window.jQuery, fakewaffle || {});
+  (function($) {
+    fakewaffle.responsiveTabs(['xs']);
+  })(jQuery);
+</script>
+
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+  });
+</script>
+
+</html>
